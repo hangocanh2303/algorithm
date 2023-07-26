@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ExponentialAlgorithm {
     public static void main(String[] args) {
-        System.out.println("Result: " + Exp(2, 2));
+        System.out.println("Result: " + Exp(2, 3));
     }
     public static int Exp(int a, int n) {
         int exp = 1;
