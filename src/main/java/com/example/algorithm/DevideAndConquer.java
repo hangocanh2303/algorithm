@@ -10,6 +10,175 @@ public class DevideAndConquer {
         System.out.println("Binary search: " + binarySearch(arr, 0, arr.length - 1, 10));
         System.out.println("Exp: " + exp(2, 3));
         System.out.println("MinMax: " + minMax(arr, 0, 9));
+
+        int[] arr1 = new int[]{  1, 2, 3, 4};
+        int[] arr2 = new int[]{  5, 6, 7, 9, 8, 10};
+        System.out.println("Merge: " + Arrays.toString(merge(arr1, arr2)));
+        System.out.println("MergeSort: " + Arrays.toString(mergeSort(arr)));
+//        System.out.println("Merge2: " + Arrays.toString(merge2(arr, 0, 4, 9)));
+//        System.out.println("MergeSort2: " + Arrays.toString(mergeSort2(arr, 0, 9)));
+        mergeSort3(arr, 0, 9);
+        System.out.println("MergeSort3: " + Arrays.toString(arr));
+    }
+
+    public static int[] mergeSort(int[] arr) {
+        int n = arr.length;
+        if (n == 1)
+            return arr;
+        else {
+            int k = n / 2;
+            int[] arr1 = mergeSort(Arrays.copyOfRange(arr, 0, k));
+            int[] arr2 = mergeSort(Arrays.copyOfRange(arr, k , n));
+            return merge(arr1, arr2);
+        }
+
+    }
+
+    public static int[] mergeSort2(int[] arr, int left, int right) {
+        if (left < right) {
+           int mid = (left + right) / 2;
+           mergeSort2(arr, left, mid);
+           mergeSort2(arr, mid + 1, right);
+           return merge2(arr, left, mid, right);
+        }
+        return null;
+    }
+
+    public static int[] merge(int[] arr1, int[] arr2) {
+        int m = arr1.length;
+        int n = arr2.length;
+        int[] result = new int[m + n];
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while (i < m && j < n) {
+           if (arr1[i] < arr2[j]) {
+               result[k] = arr1[i];
+               i = i + 1;
+           }else {
+               result[k] = arr2[j];
+               j = j + 1;
+           }
+            k = k + 1;
+        }
+        if (i == m) {
+            while (j < n) {
+                result[k] = arr2[j];
+                j = j + 1;
+                k = k + 1;
+            }
+        } else {
+            while (i < m) {
+                result[k] = arr1[j];
+                i = i + 1;
+                k = k + 1;
+            }
+        }
+        return result;
+    }
+
+    public static int[] merge2(int[] arr, int l, int m, int r) {
+        // Merges two sub arrays of arr[].
+        // First subarray is arr[l -> m]
+        // Second subarray is arr[m+1 -> r]
+        int i = l;
+        int j = m + 1;
+        int k = l;
+
+        int[] result = new int[arr.length];
+
+        while (i < m && j < r) {
+            if (arr[i] < arr[j]) {
+                result[k] = arr[i];
+                i++;
+            }else {
+                result[k] = arr[j];
+                j++;
+            }
+            k++;
+        }
+
+        if (i == m) {
+            while (j < r) {
+                result[k] = arr[j];
+                j++;
+                k++;
+            }
+        }else{
+            while (i < m) {
+                result[k] = arr[i];
+                i++;
+                k++;
+            }
+        }
+        return result;
+    }
+
+
+    static void mergeSort3(int arr[], int l, int r)
+    {
+        if (l < r) {
+
+            // Find the middle point
+            int m = l + (r - l) / 2;
+
+            // Sort first and second halves
+            mergeSort3(arr, l, m);
+            mergeSort3(arr, m + 1, r);
+
+            // Merge the sorted halves
+            merge3(arr, l, m, r);
+        }
+    }
+
+    static void merge3(int arr[], int l, int m, int r)
+    {
+        // Find sizes of two subarrays to be merged
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        // Create temp arrays
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+
+        // Copy data to temp arrays
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+
+        // Merge the temp arrays
+
+        // Initial indices of first and second subarrays
+        int i = 0, j = 0;
+
+        // Initial index of merged subarray array
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            }
+            else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        // Copy remaining elements of L[] if any
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        // Copy remaining elements of R[] if any
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
     }
 
     public static int binarySearch(int[] arr, int left , int right , int searchValue) {
