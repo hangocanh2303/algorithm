@@ -7,18 +7,70 @@ public class DevideAndConquer {
 
     public static void main(String[] args) {
         int[] arr = new int[]{  1, 3, 2, 4, 6, 5, 7, 9, 8, 10};
-        System.out.println("Binary search: " + binarySearch(arr, 0, arr.length - 1, 10));
-        System.out.println("Exp: " + exp(2, 3));
-        System.out.println("MinMax: " + minMax(arr, 0, 9));
-
-        int[] arr1 = new int[]{  1, 2, 3, 4};
-        int[] arr2 = new int[]{  5, 6, 7, 9, 8, 10};
-        System.out.println("Merge: " + Arrays.toString(merge(arr1, arr2)));
-        System.out.println("MergeSort: " + Arrays.toString(mergeSort(arr)));
+//        System.out.println("Binary search: " + binarySearch(arr, 0, arr.length - 1, 10));
+//        System.out.println("Exp: " + exp(2, 3));
+//        System.out.println("MinMax: " + minMax(arr, 0, 9));
+//
+//        int[] arr1 = new int[]{  1, 2, 3, 4};
+//        int[] arr2 = new int[]{  5, 6, 7, 9, 8, 10};
+//        System.out.println("Merge: " + Arrays.toString(merge(arr1, arr2)));
+//        System.out.println("MergeSort: " + Arrays.toString(mergeSort(arr)));
 //        System.out.println("Merge2: " + Arrays.toString(merge2(arr, 0, 4, 9)));
 //        System.out.println("MergeSort2: " + Arrays.toString(mergeSort2(arr, 0, 9)));
-        mergeSort3(arr, 0, 9);
-        System.out.println("MergeSort3: " + Arrays.toString(arr));
+//        mergeSort3(arr, 0, 9);
+//        System.out.println("MergeSort3: " + Arrays.toString(arr));
+        quickSort(arr, 0, 9);
+        System.out.println("Partition: " + Arrays.toString(arr));
+
+
+    }
+
+    static void quickSort(int[] arr, int low, int high)
+    {
+        if (low < high) {
+
+            // pi is partitioning index, arr[p]
+            // is now at right place
+            int pi = partition(arr, low, high);
+
+            // Separately sort elements before
+            // partition and after partition
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+    static void swap(int[] arr, int i, int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    // This function takes last element as pivot,
+    // places the pivot element at its correct position
+    // in sorted array, and places all smaller to left
+    // of pivot and all greater elements to right of pivot
+    static int partition(int[] arr, int low, int high)
+    {
+        // Choosing the pivot
+        int pivot = arr[high];
+
+        // Index of smaller element and indicates
+        // the right position of pivot found so far
+        int i = (low - 1);
+
+        for (int j = low; j <= high - 1; j++) {
+
+            // If current element is smaller than the pivot
+            if (arr[j] < pivot) {
+
+                // Increment index of smaller element
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, high);
+        return (i + 1);
     }
 
     public static int[] mergeSort(int[] arr) {
