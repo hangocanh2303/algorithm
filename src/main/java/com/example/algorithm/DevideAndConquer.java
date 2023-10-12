@@ -6,7 +6,8 @@ import java.util.Arrays;
 public class DevideAndConquer {
 
     public static void main(String[] args) {
-        int[] arr = new int[]{  1, 3, 2, 4, 6, 5, 7, 9, 8, 10};
+//        int[] arr = new int[]{  1, 3, 2, 4, 6, 5, 7, 9, 8, 10};
+        int[] arr = new int[]{  1, 8, 3, 9, 4, 5, 7};
 //        System.out.println("Binary search: " + binarySearch(arr, 0, arr.length - 1, 10));
 //        System.out.println("Exp: " + exp(2, 3));
 //        System.out.println("MinMax: " + minMax(arr, 0, 9));
@@ -19,7 +20,7 @@ public class DevideAndConquer {
 //        System.out.println("MergeSort2: " + Arrays.toString(mergeSort2(arr, 0, 9)));
 //        mergeSort3(arr, 0, 9);
 //        System.out.println("MergeSort3: " + Arrays.toString(arr));
-        quickSort(arr, 0, 9);
+        quickSort(arr, 0, 6);
         System.out.println("Partition: " + Arrays.toString(arr));
 
 
