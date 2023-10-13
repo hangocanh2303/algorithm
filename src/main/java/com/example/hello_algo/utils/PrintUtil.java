@@ -6,6 +6,8 @@
 
 package com.example.hello_algo.utils;
 
+import com.example.algorithm.my_hello_algo.utils.PracticeListNode;
+
 import java.util.*;
 
 class Trunk {
@@ -40,6 +42,15 @@ public class PrintUtil {
 
     /* Print a linked list */
     public static void printLinkedList(ListNode head) {
+        List<String> list = new ArrayList<>();
+        while (head != null) {
+            list.add(String.valueOf(head.val));
+            head = head.next;
+        }
+        System.out.println(String.join(" -> ", list));
+    }
+
+    public static void printLinkedList(PracticeListNode head) {
         List<String> list = new ArrayList<>();
         while (head != null) {
             list.add(String.valueOf(head.val));

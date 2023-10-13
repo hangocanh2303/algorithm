@@ -1,76 +1,56 @@
-/**
- * File: array.java
- * Created Time: 2022-11-25
- * Author: Krahets (krahets@163.com)
- */
+package com.example.algorithm.my_hello_algo;
 
-package com.example.hello_algo.chapter_array_and_linkedlist;
-
-import java.util.*;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class array {
-    /* Randomly access elements */
+public class PracticeArray {
+
+
     static int randomAccess(int[] nums) {
-        // Randomly select a number from the interval [0, nums.length)
         int randomIndex = ThreadLocalRandom.current().nextInt(0, nums.length);
-        // Get and return a random element
         return nums[randomIndex];
     }
 
-    /* Extend array length */
-    static int[] extend(int[] nums, int enlarge) {
-        // Initialize an array with extended length
-        int[] res = new int[nums.length + enlarge];
-        // Copy all elements in the original array to the new array
+    static int[] extend(int[] nums, int extendRange) {
+        int[] newArray = new int[nums.length + extendRange];
         for (int i = 0; i < nums.length; i++) {
-            res[i] = nums[i];
+            newArray[i] = nums[i];
         }
-        // Returns the expanded new array
-        return res;
+        return newArray;
     }
 
-    /* Insert element num at index of the array */
-    static void insert(int[] nums, int num, int index) {
-        // Move index and all elements after its one position backward
-        for (int i = nums.length - 1; i > index; i--) {
-            nums[i] = nums[i - 1];
+    static void insert(int[] nums, int value, int index){
+        // shift value from index to the right
+        for (int i = nums.length - 1 ; i > index; i--) {
+            nums[i] = nums[i-1];
         }
-        // Assign num to the element at index
-        nums[index] = num;
+        nums[index] = value;
     }
 
-    /* Delete the element at index index */
-    static void remove(int[] nums, int index) {
-        //Move all elements after index  forward one position
-        for (int i = index; i < nums.length - 1; i++) {
+    static void remove(int[] nums, int indexRemove) {
+        // shift value from index to the left
+        for (int i = indexRemove; i < nums.length - 1; i++) {
             nums[i] = nums[i + 1];
         }
     }
 
-    /* Traverse the array */
     static void traverse(int[] nums) {
         int count = 0;
-        // Iterate through the array by index
         for (int i = 0; i < nums.length; i++) {
-            count++;
+            count ++;
         }
-        // directly traverse the array
-        for (int num : nums) {
-            count++;
+        for (int num: nums) {
+            count ++;
         }
     }
 
-    /* Find the specified element in the array */
-    static int find(int[] nums, int target) {
+    static int find(int[] nums, int valueFind) {
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target)
+            if (nums[i] == valueFind)
                 return i;
         }
         return -1;
     }
-
-    /* Driver Code */
     public static void main(String[] args) {
         /* Initialize array */
         int[] arr = new int[5];

@@ -11,14 +11,14 @@ import com.example.hello_algo.utils.ListNode;
 import com.example.hello_algo.utils.PrintUtil;
 
 public class linked_list {
-    /* 在链表的节点 n0 之后插入节点 P */
+    /* Insert node P after node n0 in the linked list */
     static void insert(ListNode n0, ListNode P) {
         ListNode n1 = n0.next;
         P.next = n1;
         n0.next = P;
     }
 
-    /* 删除链表的节点 n0 之后的首个节点 */
+    /* Delete the first node after node n0 of the linked list */
     static void remove(ListNode n0) {
         if (n0.next == null)
             return;
@@ -28,7 +28,7 @@ public class linked_list {
         n0.next = n1;
     }
 
-    /* 访问链表中索引为 index 的节点 */
+    /* Access the node with index  in the linked list */
     static ListNode access(ListNode head, int index) {
         for (int i = 0; i < index; i++) {
             if (head == null)
@@ -38,7 +38,7 @@ public class linked_list {
         return head;
     }
 
-    /* 在链表中查找值为 target 的首个节点 */
+    /* Find the first node with value target in the linked list */
     static int find(ListNode head, int target) {
         int index = 0;
         while (head != null) {
