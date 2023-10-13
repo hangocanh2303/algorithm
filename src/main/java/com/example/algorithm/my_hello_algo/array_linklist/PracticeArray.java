@@ -1,4 +1,4 @@
-package com.example.algorithm.my_hello_algo;
+package com.example.algorithm.my_hello_algo.array_linklist;
 
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;

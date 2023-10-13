@@ -1,4 +1,4 @@
-package com.example.algorithm.my_hello_algo;
+package com.example.algorithm.my_hello_algo.array_linklist;
 
 
 /* Simple implementation of list class */
@@ -13,7 +13,7 @@ class PracticeMyList {
     private int capacity = 10; // list capacity
     private int size = 0; // List length (i.e. current number of elements)
 
-    private int extendRatio = 2; // The multiple of each list expansion
+    private static final int extendRatio = 2; // The multiple of each list expansion
 
 
     public PracticeMyList() {

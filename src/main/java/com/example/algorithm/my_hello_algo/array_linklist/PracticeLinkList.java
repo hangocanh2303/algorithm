@@ -1,4 +1,4 @@
-package com.example.algorithm.my_hello_algo;
+package com.example.algorithm.my_hello_algo.array_linklist;
 
 import com.example.algorithm.my_hello_algo.utils.PracticeListNode;
 import com.example.hello_algo.utils.ListNode;
