@@ -7,6 +7,7 @@
 package com.example.hello_algo.utils;
 
 import com.example.algorithm.my_hello_algo.utils.PracticeListNode;
+import com.example.algorithm.my_hello_algo.utils.PracticeTreeNode;
 
 import java.util.*;
 
@@ -68,8 +69,45 @@ public class PrintUtil {
         printTree(root, null, false);
     }
 
+    public static void printTree(PracticeTreeNode root) {
+        printTree(root, null, false);
+    }
+
+
     /* Print a binary tree */
     public static void printTree(TreeNode root, Trunk prev, boolean isLeft) {
+        if (root == null) {
+            return;
+        }
+
+        String prev_str = "    ";
+        Trunk trunk = new Trunk(prev, prev_str);
+
+        printTree(root.right, trunk, true);
+
+        if (prev == null) {
+            trunk.str = "———";
+        } else if (isLeft) {
+            trunk.str = "/———";
+            prev_str = "   |";
+        } else {
+            trunk.str = "\\———";
+            prev.str = prev_str;
+        }
+
+        showTrunks(trunk);
+        System.out.println(" " + root.val);
+
+        if (prev != null) {
+            prev.str = prev_str;
+        }
+        trunk.str = "   |";
+
+        printTree(root.left, trunk, false);
+    }
+
+
+    public static void printTree(PracticeTreeNode root, Trunk prev, boolean isLeft) {
         if (root == null) {
             return;
         }
