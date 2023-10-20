@@ -6,7 +6,10 @@ import java.util.List;
 
 public class PracticeTreeNode {
     public int val;
+    public int height;
+
     public PracticeTreeNode left;
+
     public PracticeTreeNode right;
 
     public PracticeTreeNode(int val) {
