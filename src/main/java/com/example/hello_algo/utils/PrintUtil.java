@@ -158,9 +158,9 @@ public class PrintUtil {
     /* Print a heap (PriorityQueue) */
     public static void printHeap(Queue<Integer> queue) {
         List<Integer> list = new ArrayList<>(queue);
-        System.out.print("堆的数组表示：");
+        System.out.print("Array representation of a heap：");
         System.out.println(list);
-        System.out.println("堆的树状表示：");
+        System.out.println("Tree representation of heap：");
         TreeNode root = TreeNode.listToTree(list);
         printTree(root);
     }
