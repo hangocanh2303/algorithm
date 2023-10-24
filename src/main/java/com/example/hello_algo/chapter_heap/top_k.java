@@ -18,9 +18,9 @@ public class top_k {
         for (int i = 0; i < k; i++) {
             heap.offer(nums[i]);
         }
-        // 从第 k+1 个元素开始，保持堆的长度为 k
+        // Starting from the k+1 th element, keep the length of the heap at k
         for (int i = k; i < nums.length; i++) {
-            // 若当前元素大于堆顶元素，则将堆顶元素出堆、当前元素入堆
+            // If the current element is larger than the top element of the heap, remove the top element from the heap and put the current element into the heap.
             if (nums[i] > heap.peek()) {
                 heap.poll();
                 heap.offer(nums[i]);
